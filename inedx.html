@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="data.js"></script>
+	<script src="function.js"></script>
+	<script src="main.js"></script>
+	<title>Game-random</title>
+</head>
+<body>
+
+	<p id="wins">Побед 0</p>
+ 	
+	<div id="complexity">Сложность
+	<button onclick="easyGame()" class="complexityBattonEasy">1-5</button>
+	<button onclick="normGame()" class="complexityBattonNorm">1-10</button>
+	<button onclick="hardGame()" class="complexityBattonHard">1-100</button>
+	</div>
+
+	<button onclick="replay()" class="replay">Сыграть ещё!</button>
+
+	<div id="stat">Неудачник!</div>	<div id="ball">Баланс 0 RanCoin'ов</div>
+
+	<p id="headsOrTails" onclick="buyHOT()">Орёл или Решка</p>
+
+		<img src="month.png" height="80px" width="80px" alt="Ночная тема" id="dark" onclick="dark()" title="Ночная тема">
+
+		<img src="sun.png" height="80px" width="80px" alt="Светлая тема" id="light" onclick="light()" title="Светлая тема">
+
+</body>
+<script src="score.js"></script>
+<script src="settings.js"></script>
+</html>
