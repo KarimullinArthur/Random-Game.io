@@ -1,22 +1,23 @@
-// const time = 1000;
-// 	step = 1;
-
-// function runNum(num, elem) {
-// 	let l = document.querySelector('#' + elem);
-// 	n = 0;
-// 	let t = Math.round(time / (num / step));
-// 	let interval = setInterval(() => {
-// 		n = n + step;
-// 		if (n == num) {
-// 			clearInterval(interval);
-// 		}
-// 		l.innerHTML = n
-// 	},
-// 		t);
-// }
-
 function score() {
-	document.getElementById("wins").innerHTML = `Побед ${wins}`
+	document.getElementById("wins").innerHTML = `Побед ${wins}`;
+	winsInRow();
+	cloneWins = 0;
+	cloneLose = 0;
+	step++;
+
+	if (u == true) {
+	winsForInRow.length = [];
+	} 
+	// else if (a == a || b || c) {winsForInRow.length = 0;}
+
+	console.log(`Число побед: ${wins}`)
+	console.log(`Поражений: ${lose}`)
+	console.log(`Баланс: ${balans + currency}`)
+	console.log(`y = ${y}`)
+	console.log(`Попыток ${step}`);
+	console.log(`cloneWins ${cloneWins}`);
+	console.log(`cloneLose ${cloneLose}`);
+	
 	};
 function ball() {
 	document.getElementById("ball").innerHTML = `Баланс ${balans + currency+"'ов"}`
