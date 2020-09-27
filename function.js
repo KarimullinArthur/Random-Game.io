@@ -1,5 +1,3 @@
- //beck
-
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -16,18 +14,15 @@ function easyGame(){
 	if (x == z ) {
 		alert("Вы угадали!")
 		wins++
+		cloneWins = 1;
 		balans = balans + easyLvl;
 	}
 
 	else {
 		alert(`Правильный ответ ${z}`);
-		lose++
+		lose++;
+		cloneLose = 1;
 	}
-
-	console.log(`Число побед: ${wins}`)
-	console.log(`Поражений: ${lose}`)
-	console.log(`Баланс: ${balans + currency}`)
-	console.log(`y = ${y}`)
 	score()
 	stat()
 	ball()
@@ -45,18 +40,15 @@ function normGame(){
 	if (x == z ) {
 		alert("Вы угадали!")
 		wins++
+		cloneWins = 1;
 		balans = balans + normLvl;
 	}
 
 	else {
 		alert(`Правильный ответ ${z}`);
-		lose++
+		lose++;
+		cloneLose = 1;
 	}
-
-	console.log(`Число побед: ${wins}`)
-	console.log(`Поражений: ${lose}`)
-	console.log(`Баланс: ${balans + currency}`)
-	console.log(`y = ${y}`)
 	score()
 	stat()
 	ball()
@@ -73,19 +65,16 @@ function hardGame(){
 
 	if (x == z ) {
 		alert("Вы угадали!")
-		wins++
+		wins++;
+		cloneWins = 1;
 		balans = balans + hardLvl;
 	}
 
 	else {
 		alert(`Правильный ответ ${z}`);
-		lose++
+		lose++;
+		cloneLose = 1;
 	}
-
-	console.log(`Число побед: ${wins}`)
-	console.log(`Поражений: ${lose}`)
-	console.log(`Баланс: ${balans + currency}`)
-	console.log(`y = ${y}`)
 	score()
 	stat()
 	ball()
@@ -131,10 +120,13 @@ function headsOrTails(){
 			alert(`ЕЕхууу + ${investHOT*2}\n Вот это удача!`);
 			balans = balans + (investHOT*2);
 			wins++;
+			cloneWins = 1;
 		} 
 		 else {
 			alert('Эхх не удача, в следущий раз повезёт!');
 			balans = balans - investHOT;
+			lose++;
+			cloneLose = 1;
 		}
 	score()
 	stat()
@@ -143,10 +135,10 @@ function headsOrTails(){
 }
 
 function buyHOT(){
-	buyhot = confirm("Этот режим стоит 20 RanCoin'ов \n Купить?")
-	if (buyhot == true && balans >= 20) {
+	buyhot = confirm("Этот режим стоит 50 RanCoin'ов \n Купить?")
+	if (buyhot == true && balans >= 50) {
 		document.getElementById("headsOrTails").style.color = '#EB2727';
-		balans = balans - 20;ball();
+		balans = balans - 50;ball();
 		document.getElementById("headsOrTails").setAttribute('onclick','headsOrTails()');
 	}else {
 		alert(`На вашем счету не достаточно средств!\nУ вас всего ${balans+''+currency}'`)
@@ -154,8 +146,29 @@ function buyHOT(){
 	
 }
 
+function array_compare(a, b) {
+    if(a.length != b.length)
+       return false;
 
+    for(i = 0; i < a.length; i++)
+       if(a[i] != b[i])
+          return false;
 
+    return true;
+}
+
+function winsInRow() {
+	winsForInRow.push(cloneWins);
+	winsForInRow.push(cloneLose);
+	console.log(winsForInRow);
+
+	u = array_compare(winsForInRow,bonus3step);
+
+	if (u == true) {
+		alert(`Вы выйграли 3 раза подряд, Бонус ${bonus3+ " " + currency}`);
+		balans += bonus3;
+	}
+}
 //front
 function dark(){
 	document.body.style.backgroundColor = "#292929";
@@ -163,8 +176,6 @@ function dark(){
 	document.getElementById("light").src = 'sun-white.png';
 
 }
-
-
 
 function light(){
 	document.body.style.backgroundColor = "#FFFFFF";
